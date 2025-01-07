@@ -8,12 +8,13 @@
 #include <string>
 using namespace std;
 
+// math func
 bool mathPuzzleCheck(int userStar, int userMoon, int userQuestion) {
     if (pow(userStar, 2) + userMoon == userQuestion) {
         return true;
     } else return false;
 }
-
+// char func
 bool caesarCheck(string ans) {
     string res = "";
     for (char ch : ans) {
@@ -21,9 +22,15 @@ bool caesarCheck(string ans) {
     }
 
     return true ? res == "egypt" : false;
+};
+
+int paintingNumber(){
+    srand(time(0));
+    return rand() % 10 + 1;
 }
 
 int main() {
+    // first question 
     cout << "You wake up after going to a museum. It's 3 am and you want to go home lets find out way out of this jonathan!" << endl;
     cout << "You start walking around you discover a tablet with ancient symbols. Each symbol represents a number" << endl;
     cout << "⭐️ + 🌙 = 11" << endl;
@@ -38,8 +45,9 @@ int main() {
         cout << "die";
         return -1;
     }
+    // second question 
     cout<<"You actually solved it somepeople cannnot think that highly (RRRRRRAJNESH)" << endl;
-    cout<<"You keep walking and find a famous quote known by all but its a Caesar Chiper with shift that is equal to the value of the star" << endl;
+    cout<<"You keep walking and find a famous quote known by all (hint: star)" << endl;
     cout << "find the meaning of this encrypted word: kmezv: " << endl;
     string caesarAns;
     cin >> caesarAns;
@@ -49,6 +57,39 @@ int main() {
         cout << "die";
         return -1;
     }
+      // question 3  
+    cout << "The quotes so happened to be under a picture of the pyramids" << endl;
+    cout << "The moon light shines onto the painting in a certain spot you can see a faint number it seems to be single digit" << endl;
     
+    int tries = 3;
+    int paintingNum;
+    bool solved = false;
+    
+    while (tries > 0 && !solved) {
+        cout << "What do you think it is? (Tries remaining: " << tries << "): ";
+        cin >> paintingNum;
+        
+        if (paintingNum == paintingNumber()) {
+            cout << "Wow you got it" << endl;
+            solved = true;
+        }
+        else if (paintingNum > paintingNumber()) {
+            tries--;
+            if (tries > 0) {
+                cout << "Too high try again" << endl;
+            }
+        }
+        else if (paintingNum > paintingNumber()){
+            tries--;
+            if (tries > 0) {
+                cout << "Too low try again" << endl;
+            }
+        }
+        else{
+        cout << "Out of tries The number was " << paintingNumber() << endl;
+        return -1;
+        }
+    }
+
     return 0;
 }
