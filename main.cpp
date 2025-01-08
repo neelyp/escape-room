@@ -37,6 +37,7 @@ int getTimeDigitSum() {
     tm *ltm = localtime(&now);
 
     // Display the current time
+    cout<<""<<endl;
     cout << "You find a clock that displays the current time in the room. The clock says: " 
          << (ltm->tm_hour) << ":" << (ltm->tm_min) << endl;
 
@@ -50,6 +51,7 @@ bool checkTimePuzzle(int correctAnswer) {
 
     if (userAnswer == correctAnswer) {
         cout << "Correct! The door creaks open." << endl;
+        cout<<""<<endl;
         return true;
     } else {
         cout << "Incorrect! The correct sum was " << correctAnswer << "." << endl;
@@ -76,13 +78,14 @@ int main() {
         return -1;
     }
     // second question 
-    cout<<"You actually solved it somepeople cannnot think that highly (RRRRRRAJNESH)" << endl;
+    cout<<""<<endl;
     cout<<"You keep walking and find a famous quote known by all (hint: star)" << endl;
     cout << "find the meaning of this encrypted word: kmezv: " << endl;
     string caesarAns;
     cin >> caesarAns;
     if (caesarCheck(caesarAns)) {
         cout << "You got it right!" << endl;
+        cout<<""<<endl;
 
     } else {
         cout << "die" << endl;
@@ -137,5 +140,9 @@ int main() {
     //extra
     time(&end); 
     double time_taken = double(end - start); 
-    cout << "Time taken by program is : " << fixed << time_taken<< setprecision(2); 
+    cout << "Time taken by program is : " << fixed << time_taken<< setprecision(2) << endl;
+
+    if(time_taken > 61){
+        cout<<"Damn took you a whole minute that is slow as flip" << endl;
+    }
 }
