@@ -23,11 +23,12 @@ bool caesarCheck(string ans) {
 
     return true ? res == "egypt" : false;
 };
-
+// random number
 int paintingNumber(){
     srand(time(0));
-    return rand() % 10 + 1;
+    return (rand() % 9 + 1 + 1) + 1;
 }
+// tme func
 
 int main() {
     // first question 
@@ -64,32 +65,24 @@ int main() {
     int tries = 3;
     int paintingNum;
     bool solved = false;
+    int ansPaint = paintingNumber();
     
     while (tries > 0 && !solved) {
         cout << "What do you think it is? (Tries remaining: " << tries << "): ";
         cin >> paintingNum;
         
-        if (paintingNum == paintingNumber()) {
-            cout << "Wow you got it" << endl;
+        if (paintingNum == ansPaint) {
+            cout << "Wow you got it" << endl; 
             solved = true;
         }
-        else if (paintingNum > paintingNumber()) {
-            tries--;
-            if (tries > 0) {
-                cout << "Too high try again" << endl;
-            }
-        }
-        else if (paintingNum > paintingNumber()){
-            tries--;
-            if (tries > 0) {
-                cout << "Too low try again" << endl;
-            }
-        }
-        else{
-        cout << "Out of tries The number was " << paintingNumber() << endl;
-        return -1;
-        }
+        else if (paintingNum > ansPaint) cout << "Too high try again" << endl;
+        else cout << "Too low try again" << endl;
+        tries--;
     }
 
+    if (!solved) cout << "Out of tries The number was " << ansPaint << endl;
+
+    // question 4
+    cout << "This painting also happened to be painting";
     return 0;
 }
